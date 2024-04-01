@@ -6,6 +6,7 @@ base: com.riverbankcomputing.PyQt.BaseApp
 base-version: '6.6'
 command: webappreader.sh
 finish-args:
+  - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
   - --filesystem=home  # to be able to save html pages to a hard drive
@@ -15,6 +16,11 @@ finish-args:
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
+  - name: easylist
+    buildsystem: simple
+    build-commands:
+      - wget https://easylist.to/easylist/easylist.txt -O /app/webappreader/src/easylist.txt
+
   - name: wget2 #  proper workable version = 2.1
     buildsystem: simple
     build-commands:
@@ -26,7 +32,7 @@ modules:
       - type: git
         url: https://gitlab.com/gnuwget/wget2.git
         commit: 657e3d22c488a2d1f173e208e253995e15f8b6db
-        
+
   - name: webappreader
     buildsystem: simple
     build-commands:
@@ -40,14 +46,15 @@ modules:
       - install -Dm644 tools.py -t /app/webappreader
       - install -Dm644 webappreader.py -t /app/webappreader
       - install -Dm644 src/logo_256.png /app/share/icons/hicolor/256x256/apps/org.mintguide.WebAppReader.png
+      - install -Dm644 src/logo_512.png /app/share/icons/hicolor/512x512/apps/org.mintguide.WebAppReader.png
       - install -Dm755 webappreader.sh /app/bin/webappreader.sh
       - install -Dm644 flatpak/org.mintguide.WebAppReader.desktop /app/share/applications/org.mintguide.WebAppReader.desktop
       - install -Dm644 flatpak/org.mintguide.WebAppReader.metainfo.xml /app/share/metainfo/org.mintguide.WebAppReader.metainfo.xml
-      
+
     sources:
       - type: git
         url: https://github.com/ShvonderSiN/WebAppReader.git
-        commit: a84710c46808b0012e6b1a23e535cefdc51a0748
+        commit: b9729b268d85ff879f97d780a1fd21027966f9df
       - type: script
         commands:
           - 'python3 /app/webappreader/webappreader.py "$@"'
