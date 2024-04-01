@@ -6,6 +6,7 @@ base: com.riverbankcomputing.PyQt.BaseApp
 base-version: '6.6'
 command: webappreader.sh
 finish-args:
+  - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
   - --filesystem=home  # to be able to save html pages to a hard drive
@@ -19,7 +20,7 @@ modules:
     buildsystem: simple
     build-commands:
       - wget https://easylist.to/easylist/easylist.txt -O /app/webappreader/src/easylist.txt
-      
+
   - name: wget2 #  proper workable version = 2.1
     buildsystem: simple
     build-commands:
@@ -31,7 +32,7 @@ modules:
       - type: git
         url: https://gitlab.com/gnuwget/wget2.git
         commit: 657e3d22c488a2d1f173e208e253995e15f8b6db
-        
+
   - name: webappreader
     buildsystem: simple
     build-commands:
@@ -49,11 +50,11 @@ modules:
       - install -Dm755 webappreader.sh /app/bin/webappreader.sh
       - install -Dm644 flatpak/org.mintguide.WebAppReader.desktop /app/share/applications/org.mintguide.WebAppReader.desktop
       - install -Dm644 flatpak/org.mintguide.WebAppReader.metainfo.xml /app/share/metainfo/org.mintguide.WebAppReader.metainfo.xml
-      
+
     sources:
       - type: git
         url: https://github.com/ShvonderSiN/WebAppReader.git
-        commit: 0b0ea74ba0c39c2e1603447d8964323d7e8a5ab5
+        commit: b9729b268d85ff879f97d780a1fd21027966f9df
       - type: script
         commands:
           - 'python3 /app/webappreader/webappreader.py "$@"'
