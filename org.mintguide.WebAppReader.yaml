@@ -12,7 +12,9 @@ finish-args:
   - --filesystem=home  # to be able to save html pages to a hard drive
   - --share=network # it is necessary to download html from the Internet
   - --device=dri # For the Qt webengine module to work perfectly with gpu
+  - --socket=pulseaudio # For video websites watching
   - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess # necessary for QtWebEngineProcess to work
+  - --env=PATH=/app/bin:/usr/bin:/bin
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
@@ -20,19 +22,16 @@ modules:
     buildsystem: simple
     build-commands:
       - wget https://easylist.to/easylist/easylist.txt -O /app/webappreader/src/easylist.txt
-
-  - name: wget2 #  proper workable version = 2.1
-    buildsystem: simple
-    build-commands:
-      - ./bootstrap
-      - ./configure --prefix=/app
-      - make
-      - make install
+      
+  - name: wget
+    buildsystem: autotools
+    config-opts:
+      - --prefix=/app
     sources:
-      - type: git
-        url: https://gitlab.com/gnuwget/wget2.git
-        commit: 657e3d22c488a2d1f173e208e253995e15f8b6db
-
+      - type: archive
+        url: https://ftp.gnu.org/gnu/wget/wget-1.21.4.tar.gz
+        sha256: 81542f5cefb8faacc39bbbc6c82ded80e3e4a88505ae72ea51df27525bcde04c
+        
   - name: webappreader
     buildsystem: simple
     build-commands:
@@ -54,7 +53,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ShvonderSiN/WebAppReader.git
-        commit: b9729b268d85ff879f97d780a1fd21027966f9df
+        commit: 51d36cb139bbb5e802b711df6257a17545b451fa
       - type: script
         commands:
           - 'python3 /app/webappreader/webappreader.py "$@"'
@@ -62,4 +61,4 @@ modules:
       
       # depencies
   - python3-requirements.json
-  
+
