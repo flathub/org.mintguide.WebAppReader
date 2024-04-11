@@ -22,7 +22,7 @@ modules:
     buildsystem: simple
     build-commands:
       - wget https://easylist.to/easylist/easylist.txt -O /app/webappreader/src/easylist.txt
-      
+
   - name: wget
     buildsystem: autotools
     config-opts:
@@ -31,7 +31,7 @@ modules:
       - type: archive
         url: https://ftp.gnu.org/gnu/wget/wget-1.21.4.tar.gz
         sha256: 81542f5cefb8faacc39bbbc6c82ded80e3e4a88505ae72ea51df27525bcde04c
-        
+
   - name: webappreader
     buildsystem: simple
     build-commands:
@@ -53,12 +53,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ShvonderSiN/WebAppReader.git
-        commit: 51d36cb139bbb5e802b711df6257a17545b451fa
+        commit: c91b0500910c8a93a2146b176a7b34d5fc037df6
       - type: script
         commands:
           - 'python3 /app/webappreader/webappreader.py "$@"'
         dest-filename: webappreader.sh
-      
+
       # depencies
   - python3-requirements.json
 
