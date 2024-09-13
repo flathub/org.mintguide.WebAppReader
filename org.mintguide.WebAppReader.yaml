@@ -48,7 +48,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ShvonderSiN/WebAppReader.git
-        commit: f16b1a3997bc117ca71fe010d72b77dcf0052acf
+        commit: 5cfd27c87384641f4169524a70292573e8040654
 
       - type: script
         commands:
