@@ -1,0 +1,73 @@
+From 61b45ed8078de2f6e80c884221e0c60109965454 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Sat, 13 Jun 2026 15:51:12 +0300
+Subject: [PATCH] Fix appdata paper cuts
+
+Signed-off-by: Sabri Ünal <yakushabb@gmail.com>
+---
+ flatpak/org.mintguide.WebAppReader.metainfo.xml | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/flatpak/org.mintguide.WebAppReader.metainfo.xml b/flatpak/org.mintguide.WebAppReader.metainfo.xml
+index ecffbdd..cd631fb 100644
+--- a/flatpak/org.mintguide.WebAppReader.metainfo.xml
++++ b/flatpak/org.mintguide.WebAppReader.metainfo.xml
+@@ -1,11 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<component type="desktop">
++<component type="desktop-application">
+     <id>org.mintguide.WebAppReader</id>
+     <name>WebAppReader</name>
+     <summary>Downloading and viewing websites offline</summary>
+     <metadata_license>CC0-1.0</metadata_license>
+     <project_license>MIT</project_license>
+-    <developer_name>Sergei Shekin</developer_name>
++    <developer id="org.mintguide">
++        <name>Sergei Shekin</name>
++    </developer>
+     <description>
+         <p>WebAppReader is a tool for organizing saved websites for offline and even online viewing. Allows you to save
+             web pages and entire portals for later viewing without internet access.
+@@ -23,31 +25,31 @@
+         <p>*Not all sources allow downloading their resources.</p>
+     </description>
+     <url type="homepage">https://mintguide.org/post/webappreader/</url>
++    <url type="bugtracker">https://github.com/ShvonderSiN/WebAppReader/issues/</url>
++    <url type="vcs-browser">https://github.com/ShvonderSiN/WebAppReader</url>
+     <screenshots>
+         <screenshot type="default">
+-            <image>
+-                https://mintguide.org/images/68747470733a2f2f692e706f7374696d672e63632f4e665947707670352f312d6d61696e2d77696e646f772e706e67_12269662108158655688.png
+-            </image>
++            <image>https://imgproxy.flathub.org/insecure/dpr:2/f:avif/rs:fill-down/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9vcmcvbWludGd1aWRlL1dlYkFwcFJlYWRlci82Mzg4MTU3ZDQxYjRmOTFhMWVmMTc5ZTAxNTBiZTk4Yy9zY3JlZW5zaG90cy9pbWFnZS0xX29yaWcucG5n</image>
+             <caption>Main window</caption>
+         </screenshot>
+         <screenshot>
+-            <image>https://i.postimg.cc/5224WqcJ/2-add-page.png</image>
++            <image>https://imgproxy.flathub.org/insecure/dpr:2/f:avif/rs:fill-down/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9vcmcvbWludGd1aWRlL1dlYkFwcFJlYWRlci82Mzg4MTU3ZDQxYjRmOTFhMWVmMTc5ZTAxNTBiZTk4Yy9zY3JlZW5zaG90cy9pbWFnZS0yX29yaWcucG5n</image>
+             <caption>Adding a page</caption>
+         </screenshot>
+         <screenshot>
+-            <image>https://i.postimg.cc/JhyRGr4d/3-view-page.png</image>
++            <image>https://imgproxy.flathub.org/insecure/dpr:2/f:avif/rs:fill-down/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9vcmcvbWludGd1aWRlL1dlYkFwcFJlYWRlci82Mzg4MTU3ZDQxYjRmOTFhMWVmMTc5ZTAxNTBiZTk4Yy9zY3JlZW5zaG90cy9pbWFnZS0zX29yaWcucG5n</image>
+             <caption>Viewing a page</caption>
+         </screenshot>
+         <screenshot>
+-            <image>https://i.postimg.cc/Mp3W6MxQ/4-edit-page.png</image>
++            <image>https://imgproxy.flathub.org/insecure/dpr:2/f:avif/rs:fill-down/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9vcmcvbWludGd1aWRlL1dlYkFwcFJlYWRlci82Mzg4MTU3ZDQxYjRmOTFhMWVmMTc5ZTAxNTBiZTk4Yy9zY3JlZW5zaG90cy9pbWFnZS00X29yaWcucG5n</image>
+             <caption>Editing a page</caption>
+         </screenshot>
+         <screenshot>
+-            <image>https://i.postimg.cc/28wkt9KT/5-download-page.png</image>
++            <image>https://imgproxy.flathub.org/insecure/dpr:2/f:avif/rs:fill-down/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9vcmcvbWludGd1aWRlL1dlYkFwcFJlYWRlci82Mzg4MTU3ZDQxYjRmOTFhMWVmMTc5ZTAxNTBiZTk4Yy9zY3JlZW5zaG90cy9pbWFnZS01X29yaWcucG5n</image>
+             <caption>Downloading a page</caption>
+         </screenshot>
+         <screenshot>
+-            <image>https://mintguide.org/images/6-view-page-shrink_11653438259071991383.png</image>
++            <image>https://imgproxy.flathub.org/insecure/dpr:2/f:avif/rs:fill-down/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9vcmcvbWludGd1aWRlL1dlYkFwcFJlYWRlci82Mzg4MTU3ZDQxYjRmOTFhMWVmMTc5ZTAxNTBiZTk4Yy9zY3JlZW5zaG90cy9pbWFnZS02X29yaWcucG5n</image>
+             <caption>Viewing a page in shrink mode</caption>
+         </screenshot>
+     </screenshots>
+--
+libgit2 1.7.2
+

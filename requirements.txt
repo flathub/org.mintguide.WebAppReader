@@ -1,0 +1,25 @@
+# Use the following command to regenerate Python modules
+# flatpak-pip-generator --runtime=org.kde.Sdk//6.10 -r requirements.txt
+
+altgraph
+beautifulsoup4
+certifi
+charset-normalizer
+click
+fake-headers
+greenlet
+html5lib
+idna
+Jinja2
+MarkupSafe
+mypy-extensions
+packaging
+pathspec
+platformdirs
+PyYAML
+requests
+soupsieve
+SQLAlchemy
+typing_extensions
+urllib3
+webencodings
