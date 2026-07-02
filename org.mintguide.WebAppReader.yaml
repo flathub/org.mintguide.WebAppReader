@@ -1,10 +1,11 @@
 app-id: org.mintguide.WebAppReader
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: '6.7'
+base-version: '6.10'
 command: webappreader.sh
+rename-icon: logo_512
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -18,6 +19,9 @@ finish-args:
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
+
+  - python3-requirements.json
+
   - name: wget
     buildsystem: autotools
     config-opts:
@@ -39,22 +43,19 @@ modules:
       - install -Dm644 settings.py -t /app/webappreader
       - install -Dm644 tools.py -t /app/webappreader
       - install -Dm644 webappreader.py -t /app/webappreader
-      - install -Dm644 src/logo_256.png /app/share/icons/hicolor/256x256/apps/org.mintguide.WebAppReader.png
-      - install -Dm644 src/logo_512.png /app/share/icons/hicolor/512x512/apps/org.mintguide.WebAppReader.png
-      - install -Dm755 webappreader.sh /app/bin/webappreader.sh
-      - install -Dm644 flatpak/org.mintguide.WebAppReader.desktop /app/share/applications/org.mintguide.WebAppReader.desktop
-      - install -Dm644 flatpak/org.mintguide.WebAppReader.metainfo.xml /app/share/metainfo/org.mintguide.WebAppReader.metainfo.xml
+      - install -Dm644 src/logo_512.png -t /app/share/icons/hicolor/512x512/apps/
+      - install -Dm755 webappreader.sh -t /app/bin/
+      - install -Dm644 flatpak/org.mintguide.WebAppReader.desktop -t /app/share/applications/
+      - install -Dm644 flatpak/org.mintguide.WebAppReader.metainfo.xml -t /app/share/metainfo/
 
     sources:
       - type: git
         url: https://github.com/ShvonderSiN/WebAppReader.git
         commit: 5cfd27c87384641f4169524a70292573e8040654
-
+      - type: patch
+        path: fix-appdata.patch
       - type: script
-        commands:
-          - 'python3 /app/webappreader/webappreader.py "$@"'
         dest-filename: webappreader.sh
-
-      # depencies
-  - python3-requirements.json
+        commands:
+          - python3 /app/webappreader/webappreader.py "$@"
 
